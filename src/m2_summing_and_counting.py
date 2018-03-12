@@ -7,7 +7,7 @@ A subsequent module lets you practice the ACCUMULATOR pattern in another classic
    IN GRAPHICS:   x = x + pixels
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
+         their colleagues and Madison Robertson.
 """  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
