@@ -96,7 +96,7 @@ def draw_parallel_lines(n, point, length, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # DONE: 2. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -116,6 +116,8 @@ def draw_parallel_lines(n, point, length, window):
         point = rg.Point(x, y)
         point.attach_to(window)
         y = y + 30
+        line = rg.Line(point, rg.Point(x+length,y))
+        line.attach_to(window)
 
     window.render()
 
@@ -188,7 +190,7 @@ def draw_lines(n, point, window):
     for k in range(n):
         point = rg.Point(x, y)
         point.attach_to(window)
-        end = rg.Point(x, y)
+        end = rg.Point(x, (y+100))
         line = rg.Line(point,end)
         line.attach_to(window)
 
