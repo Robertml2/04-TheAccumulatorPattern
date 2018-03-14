@@ -8,7 +8,7 @@ A subsequent module lets you practice the ACCUMULATOR pattern in another classic
 
 Authors: David Mutchler, Dave Fisher, Valerie Galluzzi, Amanda Stouder,
          their colleagues and Madison Robertson.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+"""  # DONE: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 
 # ----------------------------------------------------------------------
@@ -27,11 +27,11 @@ def main():
     run_test_count_sines_from()
     run_test_count_sines_vs_cosines()
 
-
+import math
 def run_test_sum_more_cosines():
     """ Tests the   sum_more_cosines   function. """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DONE: 2. Implement this TEST function.
     #   It TESTS the  sum_more_cosines  function defined below.
     #   Include at least **   3   ** tests (we wrote one for you).
     #
@@ -62,6 +62,16 @@ def run_test_sum_more_cosines():
     print('Test 1 expected:', expected, '(approximately)')
     print('       actual:  ', answer)
 
+    expected = .02082
+    answer = sum_more_cosines(-4, 1)
+    print('Test 1 expected:', expected, 'approximately')
+    print('       actual:  ',answer)
+
+    expected = 1.2483
+    answer = sum_more_cosines(-2,2)
+    print('Test 1 expected:', expected, 'approximately')
+    print('       actual:  ',answer)
+
     # ------------------------------------------------------------------
     # TO DO: 2 (continued).
     # Below this comment, add 2 more test cases of your own choosing.
@@ -69,19 +79,29 @@ def run_test_sum_more_cosines():
 
 
 def sum_more_cosines(m, n):
-    """
-    What comes in:  The two arguments are integers m and n, with m <= n.
-    What goes out:  Returns the sum
-       cos(m) + cos(m+1) + cos(m+2) +  ...  cos(n)
-    Side effects:   None.
-    Examples:
-      -- sum_more_cosines(0, 3)  returns
-            cos(0) + cos(1) + cos(2) + cos(3)
-         which is approximately 0.13416
-      -- sum_more_cosines(-4, 1)  returns
-            cos(-4) + cos(-3) + cos(-2) + cos(-1) + cos(0) + cos(1)
-         which is approximately 0.02082.
-    """
+    total = 0
+    n2 = (n+1) - m
+
+    for k in range(n2):
+
+        total = total + math.cos(m+k)
+
+    return total
+
+
+    ########################################################
+    #What comes in:  The two arguments are integers m and n, with m <= n.
+    #What goes out:  Returns the sum
+    #  cos(m) + cos(m+1) + cos(m+2) +  ...  cos(n)
+    #Side effects:   None.
+    #Examples:
+    # -- sum_more_cosines(0, 3)  returns
+    #       cos(0) + cos(1) + cos(2) + cos(3)
+    #    which is approximately 0.13416
+    # -- sum_more_cosines(-4, 1)  returns
+    #       cos(-4) + cos(-3) + cos(-2) + cos(-1) + cos(0) + cos(1)
+    #    which is approximately 0.02082.
+    #"""
     # ------------------------------------------------------------------
     # TODO: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
