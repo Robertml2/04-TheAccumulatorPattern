@@ -116,10 +116,12 @@ def draw_parallel_lines(n, point, length, window):
     point.attach_to(window)
     line = rg.Line(a, b)
     line.attach_to(window)
-    for k in range(n, length):
-        point.y = point.y +30
+    for k in range(n):
         line = rg.Line(a, b)
         line.attach_to(window)
+        a.y = a.y + 30
+        b.y = b.y + 30
+
 
     window.render()
 
@@ -192,7 +194,8 @@ def draw_lines(n, point, window):
     for k in range(n):
         point = rg.Point(x, y)
         point.attach_to(window)
-        end = rg.Point(x+100, (y-100)+200/n*(k))
+        y2 = (y-100)+(233/n)*k
+        end = rg.Point(x+100, y2)
         line = rg.Line(point,end)
         line.attach_to(window)
 
