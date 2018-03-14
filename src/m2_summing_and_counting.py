@@ -103,7 +103,7 @@ def sum_more_cosines(m, n):
     #    which is approximately 0.02082.
     #"""
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # DONE: 3. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #   That is called TEST-DRIVEN DEVELOPMENT (TDD).
     #
@@ -136,6 +136,32 @@ def run_test_count_sines_from():
     answer = count_sines_from(3, 9)
     print('Test 1 expected:', expected)
     print('       actual:  ', answer)
+
+    expected = 0
+    answer = count_sines_from(7,7)
+    print('Test 2 expected:', expected)
+    print('       actual:', answer)
+
+    expected = 1
+    answer = count_sines_from(9, 9)
+    print('Test 3 expected:', expected)
+    print('       actual:', answer)
+
+    expected = 3
+    answer = count_sines_from(4, 6)
+    print('Test 4 expected:', expected)
+    print('       actual:', answer)
+
+    expected = 1
+    answer = count_sines_from(6, 7)
+    print('Test 5 expected:', expected)
+    print('       actual:', answer)
+
+    expected = 1
+    answer = count_sines_from(7, 9)
+    print('Test 6 expected:', expected)
+    print('       actual:', answer)
+
 
     # ------------------------------------------------------------------
     # TO DO: 4 (continued).
@@ -170,6 +196,13 @@ def count_sines_from(m, n):
     #   you must NOT use the 2 or 3-parameter versions
     #   of the RANGE expression, if you happen to know them.
     # ------------------------------------------------------------------
+
+    count = 0
+
+    for k in range(n - m+1):
+        if math.sin(m+k) <= .5:
+            count = count +1
+    return count
 
 
 def run_test_count_sines_vs_cosines():
