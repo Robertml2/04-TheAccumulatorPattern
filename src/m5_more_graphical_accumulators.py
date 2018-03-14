@@ -114,7 +114,7 @@ def draw_squares_from_circle(n, circle, window):
     radius = circle.radius
     x = circle.center.x + (radius*2)
     y = circle.center.y + (radius*2)
-    length = square.length_of_each_side
+    length = radius*2
 
 
     for k in range(n):
@@ -122,7 +122,10 @@ def draw_squares_from_circle(n, circle, window):
         circle = rg.Circle(point, radius)
         circle.attach_to(window)
         square = rg.Square(point,length)
+        newpoint = rg.Point(k+1*(x+radius), k+1*(y+radius))
+        square2 = rg.Square(newpoint, length)
         square.attach_to(window)
+        square2.attach_to(window)
     window.render()
 
 
