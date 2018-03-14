@@ -111,13 +111,18 @@ def draw_squares_from_circle(n, circle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
-    x = point.x
-    y = point.y
+    radius = circle.radius
+    x = circle.center.x + (radius*2)
+    y = circle.center.y + (radius*2)
+    length = square.length_of_each_side
+
 
     for k in range(n):
         point = rg.Point(x,y)
         circle = rg.Circle(point, radius)
         circle.attach_to(window)
+        square = rg.Square(point,length)
+        square.attach_to(window)
     window.render()
 
 
