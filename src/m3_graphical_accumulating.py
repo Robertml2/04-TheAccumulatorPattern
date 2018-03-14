@@ -110,6 +110,19 @@ def draw_parallel_lines(n, point, length, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    end = 20
+
+
+    x = point.x
+    y = point.y
+
+    for _ in range(n):
+        point = rg.Point(x, y)
+        line = rg.Line(point, length)
+        line.attach_to(window)
+
+    window.render()
+
 
 def run_test_draw_lines():
     """ Tests the   draw_lines  function. """
