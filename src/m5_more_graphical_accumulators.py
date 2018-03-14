@@ -142,9 +142,8 @@ def run_test_draw_circles_from_rectangle():
     print('--------------------------------------------------')
 
     # ------------------------------------------------------------------
-    # TODO: 3. Implement this TEST function.
+    # DONE: 3. Implement this TEST function    #   defined below.  Include at least **   3   ** tests, of which
     #   It TESTS the  draw_circles_from_rectangle  function
-    #   defined below.  Include at least **   3   ** tests, of which
     #      ***  at least TWO tests are on ONE window and
     #      ***  at least ONE test is on a DIFFERENT window.
     #
@@ -154,6 +153,23 @@ def run_test_draw_circles_from_rectangle():
     #   Follow the same form as the example in a previous problem.
     ####################################################################
     # ------------------------------------------------------------------
+    title = 'test 1 and 2 of draw_circles_from_rectangle: 4 circles and 5 circles'
+    window1 = rg.RoseWindow(720, 500)
+    rectangle1 = rg.Rectangle(rg.Point(400,250),
+                              rg.Point(440, 325))
+    rectangle1.outline_thickness = 5
+    rectangle1.fill_color = 'green'
+    draw_circles_from_rectangle(4, 5, rectangle1, window1)
+
+    rectangle2 = rg.Rectangle(rg.Point(600, 400),
+                              rg.Point(500, 450))
+    rectangle2.outline_color = 'red'
+    rectangle2.fill_color = 'blue'
+
+
+
+
+
 
 
 def draw_circles_from_rectangle(m, n, rectangle, window):
