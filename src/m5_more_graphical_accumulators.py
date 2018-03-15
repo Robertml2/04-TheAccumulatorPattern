@@ -221,7 +221,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
       :type window: rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 4. Implement and test this function.
+    # DONE: 4. Implement and test this function.
     #          Tests have been written for you (above).
     #
     # CONSIDER using the ACCUMULATOR IN GRAPHICS pattern,
@@ -271,7 +271,7 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
         circle2 = rg.Circle(point1, .5*radius4)
         circle2.attach_to(window)
         circle2.outline_color = outline_color
-        radius = radius - radius4
+        radius6 = radius6 - radius4
         window.render()
 
 
@@ -296,8 +296,8 @@ def run_test_draw_lines_from_rectangles():
     rectangle2.outline_color = 'blue'
     draw_lines_from_rectangles(rectangle1, rectangle2, 5, window1)
 
-    rectangle1 = rg.Rectangle(rg.Point(870, 30), rg.Point(750, 100))
-    rectangle2 = rg.Rectangle(rg.Point(700, 90), rg.Point(650, 60))
+    rectangle1 = rg.Rectangle(rg.Point(750, 30),rg.Point(870, 100))
+    rectangle2 = rg.Rectangle(rg.Point(650, 60), rg.Point(700, 90))
     rectangle2.outline_color = 'green'
     draw_lines_from_rectangles(rectangle1, rectangle2, 8, window1)
 
@@ -307,7 +307,7 @@ def run_test_draw_lines_from_rectangles():
     title = 'Test 3 of DRAW_LINES_FROM_RECTANGLES:  11 lines!'
     window2 = rg.RoseWindow(700, 700, title)
 
-    rectangle1 = rg.Rectangle(rg.Point(550, 200), rg.Point(650, 100))
+    rectangle1 = rg.Rectangle(rg.Point(550, 100), rg.Point(650, 200))
     rectangle2 = rg.Rectangle(rg.Point(600, 50), rg.Point(650, 75))
     rectangle1.outline_color = 'brown'
     rectangle2.outline_color = 'cyan'
@@ -367,6 +367,45 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
+
+    corner_1 = rg.Point(rectangle1.corner_1.x, rectangle1.corner_1.y)
+    corner_2 = rg.Point(rectangle1.corner_2.x, rectangle1.corner_2.y)
+    corner_12 = rg.Point(rectangle2.corner_1.x, rectangle2.corner_1.y)
+    corner_22 = rg.Point(rectangle2.corner_2.x, rectangle2.corner_2.y)
+    rectangle1.attach_to(window)
+    rectangle2.attach_to(window)
+    outline_color = rectangle1.outline_color
+
+
+    window.render()
+
+    for k in range(n):
+        x = .5 * (corner_2.x - corner_1.x) + corner_1.x
+        y = .5 * (corner_2.y - corner_1.y) + corner_1.y
+        point = rg.Point(x, y)
+        x2 = .5 * (corner_22.x - corner_12.x) + corner_12.x
+        y2 = corner_12.y + .5 * (corner_22.y - corner_12.y)
+        point2 = rg.Point(x2, y2)
+        first_line = rg.Line(point, point2)
+        first_line.attach_to(window)
+        first_line.outline_color = outline_color
+        x = x - k*(.5*(corner_2.x - corner_1.x))
+        y = y + k*(.5*(corner_2.y - corner_1.y))
+        point = rg.Point(x,y)
+        x2 = x2 -k*(.5*(corner_2.x - corner_1.x))
+        y2 = y2 +k*(.5*(corner_2.y - corner_1.y))
+        point2 = rg.Point(x2, y2)
+        second_line = rg.Line(point, point2)
+        second_line.attach_to(window)
+        window.render()
+
+
+
+
+
+
+
+
 
 
 # ----------------------------------------------------------------------
