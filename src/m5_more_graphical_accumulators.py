@@ -234,20 +234,27 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
-
+    fill_color = rectangle.fill_color
+    outline_color = rectangle.outline_color
+    outline_thickness = rectangle.outline_thickness
+    #print(fill_color)
     b = rectangle.corner_2
     a = rectangle.corner_1
     corner_2 = rg.Point(rectangle.corner_2.x, rectangle.corner_2.y)
     corner_1 = rg.Point(rectangle.corner_1.x, rectangle.corner_1.y)
-    radius = .5*(corner_2.y - corner_1.y) + corner_1.y
-    radius2 = (corner_1.x - .5*(corner_2.y - corner_1.y))
-    radius3 = (corner_2.y - corner_1.y)
-    radius4 = (corner_2.x - corner_1.x)
+    radius = .5*(corner_2.y - corner_1.y) + corner_1.y#this is the vertical center line
+    radius2 = (corner_1.x - .5*(corner_2.y - corner_1.y))# this is the horizontal center line
+    radius3 = (corner_2.y - corner_1.y)# this is the diameter for our horizontal circles
+    radius4 = (corner_2.x - corner_1.x)# this is the diameter for our vertical circles
+    radius5 = .5*(corner_2.x - corner_1.x) + corner_1.x
+    radius6 = corner_1.y - .5*(corner_2.x-corner_1.x)
     rectangle = rg.Rectangle(a, b)
-    fill_color = rectangle.fill_color
+    #fill_color = rectangle.fill_color
+    rectangle.outline_color = outline_color
     rectangle.fill_color = fill_color
     outline_color = rectangle.outline_color
     rectangle.outline_color = outline_color
+    rectangle.outline_thickness = outline_thickness
     rectangle.attach_to(window)
     window.render()
 
@@ -255,15 +262,17 @@ def draw_circles_from_rectangle(m, n, rectangle, window):
         point = rg.Point(radius2, radius)
         circle = rg.Circle(point, .5*radius3)
         circle.fill_color = fill_color
+        #print(circle.fill_color)
         circle.attach_to(window)
         window.render()
-        radius2 = radius2 - (k+1*radius2)
-    #for k in range(n):
-    #   point2 = rg.Point(radius2, radius)
-    #   circle = rg.Circle(point2, .5*radius4)
-    #   circle.attach_to(window)
-    #   circle.outline_color = outline_color
-    #   window.render
+        radius2 = radius2 -radius3
+    for k in range(n):
+        point1 = rg.Point(radius5,radius6)
+        circle2 = rg.Circle(point1, .5*radius4)
+        circle2.attach_to(window)
+        circle2.outline_color = outline_color
+        radius = radius - radius4
+        window.render()
 
 
 
