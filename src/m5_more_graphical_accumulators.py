@@ -367,14 +367,12 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
     #          ** FIRST DO A CONCRETE EXAMPLE BY HAND! **
     ####################################################################
     # ------------------------------------------------------------------
-
     corner_1 = rg.Point(rectangle1.corner_1.x, rectangle1.corner_1.y)
     corner_2 = rg.Point(rectangle1.corner_2.x, rectangle1.corner_2.y)
     corner_12 = rg.Point(rectangle2.corner_1.x, rectangle2.corner_1.y)
     corner_22 = rg.Point(rectangle2.corner_2.x, rectangle2.corner_2.y)
     rectangle1.attach_to(window)
     rectangle2.attach_to(window)
-    outline_color = rectangle1.outline_color
 
 
     window.render()
@@ -388,7 +386,9 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
         point2 = rg.Point(x2, y2)
         first_line = rg.Line(point, point2)
         first_line.attach_to(window)
-        first_line.outline_color = outline_color
+        first_line.outline_color = rectangle1.outline_color
+        outline_color = first_line.outline_color
+        rectangle1.outline_color = outline_color
         x = x - k*(.5*(corner_2.x - corner_1.x))
         y = y + k*(.5*(corner_2.y - corner_1.y))
         point = rg.Point(x,y)
