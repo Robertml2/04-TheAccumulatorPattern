@@ -386,9 +386,7 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
         point2 = rg.Point(x2, y2)
         first_line = rg.Line(point, point2)
         first_line.attach_to(window)
-        first_line.outline_color = rectangle1.outline_color
-        outline_color = first_line.outline_color
-        rectangle1.outline_color = outline_color
+        first_line.color = rectangle1.outline_color
         x = x - k*(.5*(corner_2.x - corner_1.x))
         y = y + k*(.5*(corner_2.y - corner_1.y))
         point = rg.Point(x,y)
@@ -396,7 +394,12 @@ def draw_lines_from_rectangles(rectangle1, rectangle2, n, window):
         y2 = y2 +k*(.5*(corner_2.y - corner_1.y))
         point2 = rg.Point(x2, y2)
         second_line = rg.Line(point, point2)
+        second_line.color = rectangle2.outline_color
+        if k % 2 == 0:
+            second_line.color = rectangle1.outline_color
         second_line.attach_to(window)
+        second_line.thickness = 5
+        first_line.thickness = 5
         window.render()
 
 
